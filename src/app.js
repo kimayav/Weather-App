@@ -1,8 +1,9 @@
+require('dotenv').config();
 const path = require('path');   // this will include core node module that is path into our file, this is added just to be organised
-const express = require('express');  
+const express = require('express');
 const hbs = require('hbs');   // in this way we load the hbs module in our file
 
-const app = express(); 
+const app = express();
 const port = process.env.PORT || 3000;
 
 // Importing functions from utils directory
@@ -25,7 +26,7 @@ app.use(express.static(publicDirectoryPath));  // this becomes our main director
 // For index.hbs
 app.get('', (req, res) => {   // Making it Dynamic
     res.render('index', {
-        title: 'Weather',  
+        title: 'Weather',
         name: 'Kimaya Ved'
     });
 });
@@ -40,7 +41,7 @@ app.get('/about', (req, res) => {
 
 // For help.hbs
 app.get('/help', (req, res) => {
-    res.render('help', {     
+    res.render('help', {
         helpText: 'This is some helpful text.',
         title: 'Help',
         name: 'Kimaya Ved'
@@ -49,21 +50,21 @@ app.get('/help', (req, res) => {
 
 // app/weather
 app.get('/weather', (req, res) => {  // for weather page 
-    if(!req.query.address) {
+    if (!req.query.address) {
         return res.send({
             error: 'You must provide an address'
         });
     }
 
     // Here we apply default function parameter by setting it to empty object
-    geoCode(req.query.address, (error, {latitude, longitude, location} = {}) => {
-        if(error) {
+    geoCode(req.query.address, (error, { latitude, longitude, location } = {}) => {
+        if (error) {
             return res.send({
                 error           // its similar to "error: error" (shorthand property for ES6 js objects)
             });
         }
         forecast(latitude, longitude, (error, forecastData) => {
-            if(error) {
+            if (error) {
                 return res.send({
                     error           // its similar to "error: error" (shorthand property for ES6 js objects)
                 });
@@ -79,7 +80,7 @@ app.get('/weather', (req, res) => {  // for weather page
 });
 
 // For Help Error page          (Now this will be catch for help 404)
-app.get('/help/*', (req,res) => {
+app.get('/help/*', (req, res) => {
     res.render('error404', {
         errorMessage: 'Help article not found.',
         title: 'Error 404',
@@ -88,7 +89,7 @@ app.get('/help/*', (req,res) => {
 });
 
 // For Error page               (Now this will be catch all for any 404 that occurs)
-app.get('*', (req, res) => {    
+app.get('*', (req, res) => {
     res.render('error404', {
         errorMessage: 'Page not found.',
         title: 'Error 404',
