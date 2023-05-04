@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/weather.png">         {{!-- This is for the icon on the tabs --}}
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Error</title>
+</head>
+<body>
+    {{!-- We are making the sticky footer look at the end of the page --}}
+    <div class="main-content">
+        {{!-- To render a partial --}}
+        {{>header}}   {{!-- This is how we add header partials in our pages --}}
+
+        <p>{{errorMessage}}</p>
+    </div>
+
+    {{>footer}} {{!-- This is how we add footer partials in our pages --}}
+</body>
+</html>

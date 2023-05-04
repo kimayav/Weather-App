@@ -1,0 +1,57 @@
+body {                          /* 1 */
+    color: #333333;
+    font-family: arial;
+    max-width: 650px;
+    margin: 0 auto;    /* This brings the contents to the center */
+    padding: 0 16px;   /* This doesn't allow the content to stick to left when the screen size becomes small */
+
+    display: flex;      /* 7 */     /* For the footer to stick at the bottom */
+    flex-direction: column;      /* this will apply flex in vertical direction */
+    min-height: 100vh;        /* This will occupy minimum whole page height  */
+}
+
+.main-content {                 /* 8 */
+    flex-grow: 1;        /* This tells the flexbox to occupy all the left over space till the footer reaches the bottom */
+}
+
+footer {                        /* 2 */
+    color: #888888;
+    border-top: 1px solid #eeeeee;
+    margin-top: 16px;
+    padding: 16px 0;
+}
+
+header {                        /* 3 */
+    margin-top: 16px;
+    margin-bottom: 48px;
+}
+
+h1 {                            /* 4 */
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+/* Now we could have just used a tag and would have styled it accordingly, but we want to style the a tags of header specifically hence we do this */
+header a{                       /* 5 */
+    color: #888888;
+    margin-right: 16px;
+    text-decoration: none;
+
+}
+
+.portrait {                     /* 6 */
+    width: 250px;
+}
+
+input {                         /* 9 */
+    border: 1px solid #cccccc;
+    padding: 8px;
+}
+
+button {                        /* 10 */
+    cursor: pointer;
+    border: 1px solid #888888;
+    background: #888888;
+    color: white;
+    padding: 8px;
+}
